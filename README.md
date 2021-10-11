@@ -2,9 +2,9 @@
 Simple hobby code development for Linux in C language
 ---------------------------------------------------------------------------------------------------------------
 
-ascii mandelbrot fractal set for Linux
+Ascii mandelbrot fractal set for Linux.
 
-ascii julia fractal set for Linux
+Ascii julia fractal set for Linux.
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -20,8 +20,8 @@ Here is update #1 files!
 
 ---------------------------------------------------------------------------------------------------------------
 
-ascii mandelbrot uses floating point. Run in terminal screen 273x66.
+Ascii mandelbrot uses floating point. Run in terminal screen 273x66.
 
-ascii julia uses floating point. Run in terminal screen 273x66.
+Ascii julia uses floating point. Run in terminal screen 273x66.
 
 ---------------------------------------------------------------------------------------------------------------
