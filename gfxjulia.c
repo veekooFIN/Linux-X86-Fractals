@@ -4,7 +4,6 @@
  |                                                                      |
  +----------------------------------------------------------------------*/
  
- 
 // Standard includes
 #include <limits.h>
 #include <stdarg.h>
