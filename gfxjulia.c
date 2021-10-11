@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------+
  |                                                                      |
- |      gfxjulia.c -- demonstrate fractal in gfx    quick and dirty     |
+ |      gfxjulia.c -- demonstrate fractal in gfx / quick and dirty      |
  |                                                                      |
  +----------------------------------------------------------------------*/
  
@@ -33,7 +33,7 @@ void init( void )
 {
   glClearColor( 1.0, 1.0, 1.0, 0.0 );	//get white background color
   glColor3f( 0.0f, 0.0f, 0.0f );	//set drawing color
-  glPointSize( 1.0 );			//a dot is 4x4
+  glPointSize( 1.0 );			//a dot is 1x1
   glMatrixMode( GL_PROJECTION );
   glLoadIdentity();			//replace current matrix with identity matrix
   gluOrtho2D( 0.0, 800.0, 0.0, 800.0 );
@@ -85,7 +85,6 @@ void display( void )
     }
   }
   glEnd();
-  
   glFlush();				//send all output to screen
 }
 
