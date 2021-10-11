@@ -15,7 +15,7 @@
 
 #define HEIGHT 66
 #define WIDTH 273
-#define SCALE 1.7
+#define SCALE 2.0
 #define YSTEP 1
 #define XSTEP 1
 #define CX -0.8
@@ -56,7 +56,7 @@ void main(void) {
   for(y = 0; y < HEIGHT; y = y + YSTEP ) {
     for(x = 0; x < WIDTH; x = x + XSTEP ) {
       sx = (SCALE * (WIDTH/2.0 - x) / (WIDTH/2.0))*(-1);
-      sy = (SCALE * (HEIGHT/2.0 - y) / (HEIGHT/2.0))*(-0.75);
+      sy = (SCALE * (HEIGHT/2.0 - y) / (HEIGHT/2.0))*(-0.5);
       data = julia(sx, sy);
     }
   }
