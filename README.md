@@ -6,7 +6,7 @@ Gfx mandelbrot fractal set for Linux.
 
 Gfx julia fractal set for Linux.
 
-Std versions use 256 iterations and greyscale palette.
+Gfx versions use 256 iterations and greyscale palette.
 
 Ascii mandelbrot fractal set for Linux.
 
