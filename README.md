@@ -1,5 +1,5 @@
 # LinuxSimpleC
-Simple hobby code development for Linux in C language
+Simple hobby code development for Linux in C language - Fractals
 ---------------------------------------------------------------------------------------------------------------
 
 Gfx mandelbrot fractal set for Linux.
