@@ -4,6 +4,7 @@
  |                                                                      |
  +----------------------------------------------------------------------*/
  
+ 
 // Standard includes
 #include <limits.h>
 #include <stdarg.h>
@@ -14,8 +15,8 @@
 #include <math.h>
 #include <GL/glut.h>
 
-#define HEIGHT 800
-#define WIDTH 800
+#define HEIGHT 1000
+#define WIDTH 1000
 #define SCALE 1.7
 #define YSTEP 1
 #define XSTEP 1
@@ -35,7 +36,7 @@ void init( void )
   glPointSize( 1.0 );			//a dot is 1x1
   glMatrixMode( GL_PROJECTION );
   glLoadIdentity();			//replace current matrix with identity matrix
-  gluOrtho2D( 0.0, 800.0, 0.0, 800.0 );
+  gluOrtho2D( 0.0, 1000.0, 0.0, 1000.0 );
 }
 
 int julia(float x, float y) {
@@ -91,8 +92,8 @@ int main(int argc, char** argv)
 {
   glutInit(&argc, argv);	//initialize toolkit
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB );//set display mode: single bufferring, RGBA model
-  glutInitWindowSize(800, 800);		//set window size on screen
-  glutInitWindowPosition( 100, 150 ); 	//set window position on screen
+  glutInitWindowSize(1000, 1000);		//set window size on screen
+  glutInitWindowPosition( 50, 50 ); 	//set window position on screen
   glutCreateWindow(argv[0]);		//open screen window
   init();
   glutDisplayFunc (display);		//points to display function
