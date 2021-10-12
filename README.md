@@ -26,12 +26,12 @@ Here is update #2 files!
 
 ---------------------------------------------------------------------------------------------------------------
 
-Gfx mandelbrot uses floating point. Run from terminal and opens 800x800 screen.
+Gfx mandelbrot uses floating point. Run from terminal and opens 1000x1000 screen.
 
-Gfx julia uses floating point. Run from terminal and opens 800x800 screen.
+Gfx julia uses floating point. Run from terminal and opens 1000x1000 screen.
 
-Ascii mandelbrot uses floating point. Run in terminal screen 273x66.
+Ascii mandelbrot uses floating point. Run in terminal screen 200x50.
 
-Ascii julia uses floating point. Run in terminal screen 273x66.
+Ascii julia uses floating point. Run in terminal screen 200x50.
 
 ---------------------------------------------------------------------------------------------------------------
