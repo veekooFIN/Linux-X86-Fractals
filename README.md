@@ -35,3 +35,11 @@ Ascii mandelbrot uses floating point. Run in terminal screen 200x50.
 Ascii julia uses floating point. Run in terminal screen 200x50.
 
 ---------------------------------------------------------------------------------------------------------------
+Some tips
+How to compile:
+gcc gfxbrot.c -o gfxbrot -lGL -lGLU -lglut
+
+How to imstall OpenGL/Glut:
+sudo apt-get install aptitude
+sudo aptitude install freeglut3-dev
+
