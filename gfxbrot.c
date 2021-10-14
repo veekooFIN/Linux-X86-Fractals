@@ -71,16 +71,16 @@ void display( void )
   glClear( GL_COLOR_BUFFER_BIT );	//clear screen
   glBegin( GL_POINTS );			//draw points
     for(y = 0; y < HEIGHT; y = y + YSTEP ) {
-    for(x = 0; x < WIDTH; x = x + XSTEP ) {
-      sx = -0.7 + (SCALE * (WIDTH/2.0 - x) / (WIDTH/2.0))*(-1);
-      sy = (SCALE * (HEIGHT/2.0 - y) / (HEIGHT/2.0))*(-0.75);
-      data = mandelbrot(sx, sy);
-      col = (256.0-data)/256.0;
+      for(x = 0; x < WIDTH; x = x + XSTEP ) {
+        sx = -0.7 + (SCALE * (WIDTH/2.0 - x) / (WIDTH/2.0))*(-1);
+        sy = (SCALE * (HEIGHT/2.0 - y) / (HEIGHT/2.0))*(-0.75);
+        data = mandelbrot(sx, sy);
+        col = (256.0-data)/256.0;
       
-      glColor3f(col,col,col);
-      glVertex2i(x,y);
-    }
-  }
+        glColor3f(col,col,col);
+        glVertex2i(x,y);
+      }
+    }  
   glEnd();
   glFlush();				//send all output to screen
 }
