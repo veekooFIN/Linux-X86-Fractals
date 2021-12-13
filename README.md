@@ -35,6 +35,10 @@ Ascii mandelbrot uses floating point. Run in terminal screen 200x50.
 Ascii julia uses floating point. Run in terminal screen 200x50.
 
 ---------------------------------------------------------------------------------------------------------------
+
+Next ideas is to add about 1000 color and 1000 iterations nice palette. No more greyscale.
+
+---------------------------------------------------------------------------------------------------------------
 Some tips
 
 How to install OpenGL/Glut:
