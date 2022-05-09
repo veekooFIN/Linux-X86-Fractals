@@ -76,7 +76,7 @@ void display( void )
     for(y = 0; y < HEIGHT; y = y + YSTEP ) {
       for(x = 0; x < WIDTH; x = x + XSTEP ) {
         sx = (SCALE * (WIDTH/2.0 - x) / (WIDTH/2.0))*(-1);
-        sy = (SCALE * (HEIGHT/2.0 - y) / (HEIGHT/2.0))*(-0.75);
+        sy = (SCALE * (HEIGHT/2.0 - y) / (HEIGHT/2.0))*(-0.65);
         data = julia(sx, sy);
         col = (256.0-data)/256.0;
       
