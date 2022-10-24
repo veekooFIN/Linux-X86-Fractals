@@ -4,7 +4,6 @@
  |                                                                      |
  +----------------------------------------------------------------------*/
  
- 
 // Standard includes
 #include <limits.h>
 #include <stdarg.h>
@@ -17,9 +16,6 @@
 
 #define WIDTH 3425
 #define HEIGHT 1725
-#define SCALE 1.7
-#define YSTEP 1
-#define XSTEP 1
 #define CX -0.8
 #define CY 0.156
 
@@ -39,29 +35,22 @@ void init( void )
   gluOrtho2D( 0.0, 3425.0, 0.0, 1725.0 );
 }
 
-int julia(float x, float y) {
- float zz;
- float a;
- float b;
- float a2;
- float b2;
- float atemp;
- int i;
-  
-  a = x;
-  b = y;  
-  i = 0;
-  while (i < 256)
+int julia(double real0, double imag0) {
+  double realq, imagq; 
+  double real, imag;
+  int i;
+
+  real = real0;
+  imag = imag0;
+  for (i = 0; i < 256; i++)
   {
-    a2 = a * a;
-    b2 = b * b;
-    zz = a2 + b2;
-    if(zz > 4) break;
-    
-    atemp = a2 - b2 + CX;
-    b = 2.0 * a * b + CY;
-    a = atemp;
-    i++;
+    realq = (real * real);
+    imagq = (imag * imag);
+
+    if ((realq + imagq) > 4.0f) break;
+
+    imag = (2.0f * real * imag) + CY;
+    real = realq - imagq + CX;
   }
   return i;
 }
@@ -69,21 +58,35 @@ int julia(float x, float y) {
 void display( void )
 {
   int x, y, data;
-  float sx, sy, col;
-  
+  double col;
+  double realmin, imagmin, realmax, imagmax;
+  double deltareal, deltaimag, real0, imag0;  
+    
   glClear( GL_COLOR_BUFFER_BIT );	//clear screen
   glBegin( GL_POINTS );			//draw points
-    for(y = 0; y < HEIGHT; y = y + YSTEP ) {
-      for(x = 0; x < WIDTH; x = x + XSTEP ) {
-        sx = (SCALE * (WIDTH/2.0 - x) / (WIDTH/2.0))*(-1);
-        sy = (SCALE * (HEIGHT/2.0 - y) / (HEIGHT/2.0))*(-0.65);
-        data = julia(sx, sy);
-        col = (256.0-data)/256.0;
+
+  realmin = -1.7f;
+  realmax = 1.7f;
+  imagmin = -1.0f;
+  imagmax = 1.0f; 
+  
+  deltareal = (double) (realmax - realmin) / (double) WIDTH;
+  deltaimag = (double) (imagmax - imagmin) / (double) HEIGHT;
+
+  real0 = realmin; 
+  for(x = 0; x < WIDTH; x++ ) {
+    imag0 = imagmax;
+    for(y = 0; y < HEIGHT; y++ ) {
+      data = julia(real0, imag0);
+      col = (256.0f-data)/256.0f;
       
-        glColor3f(col,col,col);
-        glVertex2i(x,y);
-      }
+      glColor3f(col,col,col);
+      glVertex2i(x,y);
+      
+      imag0 -= deltaimag;
     }
+    real0 += deltareal;
+  }
   glEnd();
   glFlush();				//send all output to screen
 }
