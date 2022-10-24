@@ -14,8 +14,8 @@
 #include <math.h>
 #include <GL/glut.h>
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 3425
+#define HEIGHT 1725
 
 //initialization
 void init(void);
@@ -30,24 +30,24 @@ void init( void )
   glPointSize( 1.0 );			//a dot is 1x1
   glMatrixMode( GL_PROJECTION );
   glLoadIdentity();			//replace current matrix with identity matrix
-  gluOrtho2D( 0.0, 640.0, 0.0, 480.0 );
+  gluOrtho2D( 0.0, 3425.0, 0.0, 1725.0 );
 }
 
-int burnship(float real0, float imag0) {
-  float realq, imagq; 
-  float real, imag;
+int burnship(double real0, double imag0) {
+  double realq, imagq; 
+  double real, imag;
   int i;
 
   real = real0;
   imag = imag0;
-  for (i = 0; i < 15; i++)
+  for (i = 0; i < 256; i++)
   {
     realq = (real * real);
     imagq = (imag * imag);
 
     if ((realq + imagq) > 4.0f) break;
 
-    imag = abs(2.0f * real * imag) + imag0;
+    imag = fabs(2.0f * real * imag) + imag0;
     real = realq - imagq + real0;
   }
   return i;
@@ -56,32 +56,32 @@ int burnship(float real0, float imag0) {
 void display( void )
 {
   int x, y, data;
-  float col;
-  float realmin, imagmin, realmax, imagmax;
-  float deltareal, deltaimag, real0, imag0;  
+  double col;
+  double realmin, imagmin, realmax, imagmax;
+  double deltareal, deltaimag, real0, imag0;  
     
   glClear( GL_COLOR_BUFFER_BIT );	//clear screen
   glBegin( GL_POINTS );			//draw points
 
-  realmin = -2.5f;
-  realmax = 1.0f;
-  imagmin = -1.0f;
-  imagmax = 1.0f; 
+  realmin = -1.8f;
+  realmax = -1.7f;
+  imagmin = -0.08f;
+  imagmax = 0.01f; 
   
-  deltareal = (float) (realmax - realmin) / (float) WIDTH;
-  deltaimag = (float) (imagmax - imagmin) / (float) HEIGHT;
+  deltareal = (double) (realmax - realmin) / (double) WIDTH;
+  deltaimag = (double) (imagmax - imagmin) / (double) HEIGHT;
 
   real0 = realmin; 
   for(x = 0; x < WIDTH; x++ ) {
-    imag0 = imagmin;
+    imag0 = imagmax;
     for(y = 0; y < HEIGHT; y++ ) {
       data = burnship(real0, imag0);
-      col = (15.0f-data)/15.0f;
+      col = (256.0f-data)/256.0f;
       
       glColor3f(col,col,col);
       glVertex2i(x,y);
       
-      imag0 += deltaimag;
+      imag0 -= deltaimag;
     }
     real0 += deltareal;
   }
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
 {
   glutInit(&argc, argv);	//initialize toolkit
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB );//set display mode: single bufferring, RGBA model
-  glutInitWindowSize(640, 480);		//set window size on screen
+  glutInitWindowSize(3425, 1725);		//set window size on screen
   glutInitWindowPosition( 0, 0 ); 	//set window position on screen
   glutCreateWindow(argv[0]);		//open screen window
   init();
