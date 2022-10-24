@@ -15,8 +15,8 @@
 #include <math.h>
 #include <GL/glut.h>
 
-#define HEIGHT 2160
-#define WIDTH 3840
+#define WIDTH 3425
+#define HEIGHT 1725
 #define SCALE 1.7
 #define YSTEP 1
 #define XSTEP 1
@@ -36,7 +36,7 @@ void init( void )
   glPointSize( 1.0 );			//a dot is 1x1
   glMatrixMode( GL_PROJECTION );
   glLoadIdentity();			//replace current matrix with identity matrix
-  gluOrtho2D( 0.0, 3840.0, 0.0, 2160.0 );
+  gluOrtho2D( 0.0, 3425.0, 0.0, 1725.0 );
 }
 
 int julia(float x, float y) {
@@ -92,7 +92,7 @@ int main(int argc, char** argv)
 {
   glutInit(&argc, argv);	//initialize toolkit
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB );//set display mode: single bufferring, RGBA model
-  glutInitWindowSize(3840, 2160);		//set window size on screen
+  glutInitWindowSize(3425, 1725);		//set window size on screen
   glutInitWindowPosition( 0, 0 ); 	//set window position on screen
   glutCreateWindow(argv[0]);		//open screen window
   init();
