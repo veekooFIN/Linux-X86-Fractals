@@ -27,8 +27,8 @@ void display(void);
 //initialization
 void init( void )
 {
-  glClearColor( 1.0, 1.0, 1.0, 0.0 );	//get white background color
-  glColor3f( 0.0f, 0.0f, 0.0f );	//set drawing color
+  glClearColor( 0.0, 0.0, 0.0, 0.0 );	//get white background color
+  glColor3f( 1.0f, 1.0f, 1.0f );	//set drawing color
   glPointSize( 1.0 );			//a dot is 1x1
   glMatrixMode( GL_PROJECTION );
   glLoadIdentity();			//replace current matrix with identity matrix
@@ -78,7 +78,7 @@ void display( void )
     imag0 = imagmax;
     for(y = 0; y < HEIGHT; y++ ) {
       data = julia(real0, imag0);
-      col = (256.0f-data)/256.0f;
+      col = data/256.0f;
       
       glColor3f(col,col,col);
       glVertex2i(x,y);
