@@ -45,7 +45,7 @@ sudo aptitude install freeglut3-dev
 
 How to compile:
 
-gcc gfxbrot.c -o gfxbrot -lGL -lGLU -lglut
+gcc gfxbrot.c -o gfxbrot -lGL -lGLU -lglut -lm
 
 How to run:
 
