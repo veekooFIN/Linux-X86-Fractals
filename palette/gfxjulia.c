@@ -57,7 +57,7 @@ int julia(double real0, double imag0) {
 
 void display( void )
 {
-  int x, y, data;
+  int x, y, data, i;
   double palette[256][3];
   double realmin, imagmin, realmax, imagmax;
   double deltareal, deltaimag, real0, imag0;  
