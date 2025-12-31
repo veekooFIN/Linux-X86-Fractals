@@ -6,6 +6,8 @@ Gfx mandelbrot fractal set for Linux.
 
 Gfx julia fractal set for Linux.
 
+Gfx burnship fractal set for Linux.
+
 Gfx versions use 256 iterations and greyscale palette.
 
 Ascii mandelbrot fractal set for Linux.
@@ -17,9 +19,6 @@ Ascii julia fractal set for Linux.
 
 ---------------------------------------------------------------------------------------------------------------
 C language code developed for Linux. 
-Executable files added.
-Runtime pictures added.
-
 ---------------------------------------------------------------------------------------------------------------
 
 
@@ -28,6 +27,8 @@ Runtime pictures added.
 Gfx mandelbrot uses floating point. Run from terminal and opens 1500x800 screen.
 
 Gfx julia uses floating point. Run from terminal and opens 1500x800 screen.
+
+Gfx burnship uses floating point. Run from terminal and opens 1500x800 screen.
 
 Ascii mandelbrot uses floating point. Run in terminal screen 132x43.
 
