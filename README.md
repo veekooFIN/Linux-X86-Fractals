@@ -25,13 +25,13 @@ Runtime pictures added.
 
 ---------------------------------------------------------------------------------------------------------------
 
-Gfx mandelbrot uses floating point. Run from terminal and opens 3840x2160 screen.
+Gfx mandelbrot uses floating point. Run from terminal and opens 1500x800 screen.
 
-Gfx julia uses floating point. Run from terminal and opens 3840x2160 screen.
+Gfx julia uses floating point. Run from terminal and opens 1500x800 screen.
 
-Ascii mandelbrot uses floating point. Run in terminal screen 200x50.
+Ascii mandelbrot uses floating point. Run in terminal screen 132x43.
 
-Ascii julia uses floating point. Run in terminal screen 200x50.
+Ascii julia uses floating point. Run in terminal screen 132x43.
 
 ---------------------------------------------------------------------------------------------------------------
 
