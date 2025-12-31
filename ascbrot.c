@@ -20,8 +20,8 @@
 #include <string.h>
 #include <math.h>
 
-#define HEIGHT 50
-#define WIDTH 200
+#define HEIGHT 30
+#define WIDTH 132
 #define SCALE 2.6
 #define YSTEP 1
 #define XSTEP 1

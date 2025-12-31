@@ -21,8 +21,8 @@
 #include <math.h>
 #include <GL/glut.h>
 
-#define WIDTH 3425
-#define HEIGHT 1725
+#define WIDTH 1500
+#define HEIGHT 800
 
 //initialization
 void init(void);
@@ -37,7 +37,7 @@ void init( void )
   glPointSize( 1.0 );			//a dot is 1x1
   glMatrixMode( GL_PROJECTION );
   glLoadIdentity();			//replace current matrix with identity matrix
-  gluOrtho2D( 0.0, 3425.0, 0.0, 1725.0 );
+  gluOrtho2D( 0.0, WIDTH, 0.0, HEIGHT);
 }
 
 int mandelbrot(double real0, double imag0) {
@@ -100,7 +100,7 @@ int main(int argc, char** argv)
 {
   glutInit(&argc, argv);	//initialize toolkit
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB );//set display mode: single bufferring, RGBA model
-  glutInitWindowSize(3425, 1725);		//set window size on screen
+  glutInitWindowSize(WIDTH, HEIGHT);		//set window size on screen
   glutInitWindowPosition( 0, 0 ); 	//set window position on screen
   glutCreateWindow(argv[0]);		//open screen window
   init();
