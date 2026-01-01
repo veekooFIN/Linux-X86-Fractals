@@ -1,0 +1,113 @@
+/*----------------------------------------------------------------------+
+ |                                                                      |
+ |             gfxbrot.c -- Mandelbrot fractal in OpenGL with GLUT      |
+ |             gcc -o mandelbrot gfxbrot.c -lglut -lGL -lGLU            |
+ |             gcc -o mandelbrot gfxbrot.c -lfreeglut -lGL -lGLU        |
+ +----------------------------------------------------------------------*/
+
+#include <stdlib.h>
+#include <GL/glut.h>  // or <GL/freeglut.h> on some systems
+
+#define WIDTH  1500
+#define HEIGHT 800
+
+void init(void);
+void display(void);
+void reshape(int w, int h);
+
+void init(void)
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glPointSize(1.0f);
+}
+
+int mandelbrot(double cr, double ci, int max_iter)
+{
+    double zr = 0.0, zi = 0.0;
+    double zr2, zi2;
+    int i = 0;
+
+    while (i < max_iter)
+    {
+        zr2 = zr * zr;
+        zi2 = zi * zi;
+        if (zr2 + zi2 > 4.0) break;
+
+        double new_zr = zr2 - zi2 + cr;
+        double new_zi = 2.0 * zr * zi + ci;
+        zr =bindung new_zr;
+        zi = new_zi;
+        i++;
+    }
+    return i;
+}
+
+void display(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_POINTS);
+
+    const double real_min = -2.4;
+    const double real_max = 1.0;
+    const double imag_max = 1.2;   // note: max first because we flip Y
+    const double imag_min = -1.2;
+
+    const double dx = (real_max - real_min) / WIDTH;
+    const double dy = (imag_max - imag_min) / HEIGHT;
+
+    for (int px = 0; px < WIDTH; px++)
+    {
+        double cr = real_min + px * dx;
+
+        for (int py = 0; py < HEIGHT; py++)
+        {
+            // Flip Y coordinate so fractal is right-side up
+            double ci = imag_max - py * dy;
+
+            int iter = mandelbrot(cr, ci, 256);
+
+            if (iter == 256)
+            {
+                glColor3f(0.0f, 0.0f, 0.0f);  // inside: black
+            }
+            else
+            {
+                float brightness = iter / 256.0f;
+                brightness = brightness * brightness;  // optional: make colors pop more
+                glColor3f(brightness, brightness, 0.7f * brightness); // white-blue tint
+            }
+
+            glVertex2i(px, py);
+        }
+    }
+
+    glEnd();
+    glutSwapBuffers();
+}
+
+void reshape(int w, int h)
+{
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0, w, 0.0, h);  // Y=0 at bottom
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+
+int main(int argc, char** argv)
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(WIDTH, HEIGHT);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Mandelbrot Set - OpenGL/GLUT");
+
+    init();
+
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+
+    glutMainLoop();
+    return 0;
+}

@@ -1,0 +1,103 @@
+/*----------------------------------------------------------------------+
+ |                                                                      |
+ |             gfxbrot.c -- Mandelbrot fractal in classic GLUT          |
+ |             gcc -o gfxbrot gfxbrot.c -lglut -lGL -lGLU               |
+ +----------------------------------------------------------------------*/
+
+#include <GL/glut.h>
+
+#define WIDTH  1500
+#define HEIGHT 800
+
+void init(void);
+void display(void);
+void reshape(int w, int h);
+
+void init(void)
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);  // black background
+    glPointSize(1.0f);
+}
+
+int mandelbrot(double cr, double ci)
+{
+    double zr = 0.0, zi = 0.0;   // start from z = 0 !! (critical fix)
+    double zr2, zi2;
+    int iter;
+
+    for (iter = 0; iter < 256; iter++)
+    {
+        zr2 = zr * zr;
+        zi2 = zi * zi;
+        if (zr2 + zi2 > 4.0) break;
+
+        double temp = zr2 - zi2 + cr;
+        zi = 2.0 * zr * zi + ci;
+        zr = temp;
+    }
+    return iter;
+}
+
+void display(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_POINTS);
+
+    double real_min = -2.4;
+    double real_max = 1.0;
+    double imag_min = -1.2;
+    double imag_max = 1.2;
+
+    double dx = (real_max - real_min) / WIDTH;
+    double dy = (imag_max - imag_min) / HEIGHT;
+
+    for (int x = 0; x < WIDTH; x++)
+    {
+        double cr = real_min + x * dx;
+
+        for (int y = 0; y < HEIGHT; y++)
+        {
+            // Flip Y so fractal is right-side up
+            double ci = imag_max - y * dy;
+
+            int iter = mandelbrot(cr, ci);
+
+            float col;
+            if (iter == 256)
+                col = 0.0f;                     // inside: black
+            else
+                col = iter / 256.0f;            // escape speed → brightness
+
+            glColor3f(col, col, col);
+            glVertex2i(x, y);
+        }
+    }
+
+    glEnd();
+    glutSwapBuffers();
+}
+
+void reshape(int w, int h)
+{
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0, WIDTH, 0.0, HEIGHT);
+    glMatrixMode(GL_MODELVIEW);
+}
+
+int main(int argc, char** argv)
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);  // double buffering
+    glutInitWindowSize(WIDTH, HEIGHT);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Mandelbrot Set");
+
+    init();
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+
+    glutMainLoop();
+    return 0;
+}
