@@ -11,7 +11,6 @@
  |                                                                      |
  +----------------------------------------------------------------------*/
  
-// Standard includes
 #include <stdlib.h>
 #include <math.h>
 #include <GL/glut.h>
@@ -90,7 +89,7 @@ void reshape(int w, int h)
   glViewport(0, 0, w, h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluOrtho2D(0.0, w, 0.0, h);  // Y=0 at bottom
+  gluOrtho2D(0.0, w, 0.0, h);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 }
@@ -101,7 +100,7 @@ int main(int argc, char** argv)
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize(WIDTH, HEIGHT);
   glutInitWindowPosition(100, 100);
-  glutCreateWindow("BurnShip Set - OpenGL/GLUT");
+  glutCreateWindow("Burning Ship Set - OpenGL/GLUT");
 
   init();
 

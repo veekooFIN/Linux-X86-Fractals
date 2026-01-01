@@ -11,7 +11,6 @@
  |                                                                      |
  +----------------------------------------------------------------------*/
  
-// Standard includes
 #include <stdlib.h>
 #include <GL/glut.h>
 
@@ -89,7 +88,7 @@ void reshape(int w, int h)
   glViewport(0, 0, w, h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluOrtho2D(0.0, w, 0.0, h);  // Y=0 at bottom
+  gluOrtho2D(0.0, w, 0.0, h);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 }
