@@ -100,7 +100,7 @@ int main(int argc, char** argv)
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize(WIDTH, HEIGHT);
   glutInitWindowPosition(100, 100);
-  glutCreateWindow("Burning Ship Set - OpenGL/GLUT");
+  glutCreateWindow("Burning Ship Set - OpenGL/freeglut");
 
   init();
 

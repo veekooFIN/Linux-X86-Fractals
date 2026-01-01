@@ -99,7 +99,7 @@ int main(int argc, char** argv)
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize(WIDTH, HEIGHT);
   glutInitWindowPosition(100, 100);
-  glutCreateWindow("Mandelbrot Set - OpenGL/GLUT");
+  glutCreateWindow("Mandelbrot Set - OpenGL/freeglut");
 
   init();
 

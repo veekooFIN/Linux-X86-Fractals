@@ -101,7 +101,7 @@ int main(int argc, char** argv)
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize(WIDTH, HEIGHT);
   glutInitWindowPosition(100, 100);
-  glutCreateWindow("Julia Set - OpenGL/GLUT");
+  glutCreateWindow("Julia Set - OpenGL/freeglut");
 
   init();
 
