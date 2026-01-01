@@ -18,17 +18,14 @@
 #define WIDTH 1500
 #define HEIGHT 800
 
-//initialization
 void init(void);
-//does the drawing 
 void display(void);
+void reshape(int w, int h);
 
-//initialization
-void init( void )
+void init(void)
 {
-  glClearColor( 0.0, 0.0, 0.0, 0.0 );
-  glColor3f( 1.0f, 1.0f, 1.0f );
-  glPointSize( 1.0 );
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  glPointSize(1.0f);
 }
 
 int mandelbrot(double real0, double imag0) {
@@ -58,13 +55,6 @@ void display(void)
   double realmin, imagmin, realmax, imagmax;
   double deltareal, deltaimag, real0, imag0; 
     
-  glViewport(0, 0, WIDTH, HEIGHT);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D(0.0, WIDTH, 0.0, HEIGHT);
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-
   glClear(GL_COLOR_BUFFER_BIT);
   glBegin(GL_POINTS);
 
@@ -99,7 +89,9 @@ void reshape(int w, int h)
   glViewport(0, 0, w, h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluOrtho2D(0.0, w, 0.0, h);
+  gluOrtho2D(0.0, w, 0.0, h);  // Y=0 at bottom
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
 }
 
 int main(int argc, char** argv)
@@ -107,8 +99,8 @@ int main(int argc, char** argv)
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize(WIDTH, HEIGHT);
-  glutInitWindowPosition(0, 0);
-  glutCreateWindow(argv[0]);
+  glutInitWindowPosition(100, 100);
+  glutCreateWindow("Mandelbrot Set - OpenGL/GLUT");
 
   init();
 
@@ -118,4 +110,3 @@ int main(int argc, char** argv)
   glutMainLoop();
   return 0;
 }
-
