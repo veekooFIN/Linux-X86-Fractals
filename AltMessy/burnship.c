@@ -13,7 +13,7 @@
  
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glut.h>
+#include <GL/freeglut.h>
 
 #define WIDTH 1500
 #define HEIGHT 800
