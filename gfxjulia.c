@@ -12,13 +12,6 @@
  +----------------------------------------------------------------------*/
  
 // Standard includes
-#include <limits.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <string.h>
-#include <math.h>
 #include <GL/glut.h>
 
 #define WIDTH 1500
