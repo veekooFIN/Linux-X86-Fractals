@@ -2,6 +2,10 @@
 Hobby code development for Linux in C language - Fractals
 ---------------------------------------------------------------------------------------------------------------
 
+Check the new SDL2 fractals
+
+---------------------------------------------------------------------------------------------------------------
+
 Gfx mandelbrot fractal set for Linux.
 
 Gfx julia fractal set for Linux.
