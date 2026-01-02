@@ -1,0 +1,91 @@
+/*                                                                                                                     
+  __    _ ______  ______  __  __  _____  _____  ______  ____  ____   _   ______  _____  _____   ____  ____   _  ______  
+ \  \  //|   ___||   ___||  |/ / /     \/     \|   ___||    ||    \ | | |   ___|/     \|     \ |    ||    \ | ||   ___| 
+  \  \// |   ___||   ___||     \ |     ||     ||   ___||    ||     \| | |   |__ |     ||      \|    ||     \| ||   |  | 
+   \__/  |______||______||__|\__\\_____/\_____/|___|   |____||__/\____| |______|\_____/|______/|____||__/\____||______| 
+                                                                                                                        
+                                                                                                                        */ 
+
+/*----------------------------------------------------------------------+
+ |                                                                      |
+ |             gfxjulia_sdl.c -- demonstrate fractal in gfx             |
+ |                                                                      |
+ +----------------------------------------------------------------------*/
+
+#include <SDL2/SDL.h>
+#include <stdio.h>
+
+#define WIDTH 1500
+#define HEIGHT 800
+#define CX -0.8
+#define CY 0.156
+
+int julia(double real0, double imag0) {
+    double real = real0;
+    double imag = imag0;
+    double realq, imagq;
+    int i;
+
+    for (i = 0; i < 256; i++) {
+        realq = real * real;
+        imagq = imag * imag;
+        if ((realq + imagq) > 4.0) break;
+        imag = (2.0 * real * imag) + CY;
+        real = realq - imagq + CX;
+    }
+    return i;
+}
+
+void render(SDL_Renderer *renderer) {
+    double realmin = -1.7, realmax = 1.7;
+    double imagmin = -1.0, imagmax = 1.0;
+    double deltareal = (realmax - realmin) / WIDTH;
+    double deltaimag = (imagmax - imagmin) / HEIGHT;
+
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
+    for (int x = 0; x < WIDTH; x++) {
+        for (int y = 0; y < HEIGHT; y++) {
+            double r0 = realmin + x * deltareal;
+            double i0 = imagmax - y * deltaimag;
+            int data = julia(r0, i0);
+
+            if (data < 256) {
+                int col = data; // Harmaasävy 0-255
+                SDL_SetRenderDrawColor(renderer, col, col, col, 255);
+                SDL_RenderDrawPoint(renderer, x, y);
+            } else {
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                SDL_RenderDrawPoint(renderer, x, y);
+            }
+        }
+    }
+    SDL_RenderPresent(renderer);
+}
+
+int main(int argc, char* argv[]) {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) return 1;
+
+    SDL_Window *window = SDL_CreateWindow("Julia SDL2",
+        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+
+    if (!window) return 1;
+
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    render(renderer);
+
+    SDL_Event e;
+    int quit = 0;
+    while (!quit) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) quit = 1;
+        }
+    }
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return 0;
+}
