@@ -40,9 +40,9 @@ int burnship(double real0, double imag0) {
     realq = (real * real);
     imagq = (imag * imag);
 
-    if ((realq + imagq) > 4.0f) break;
+    if ((realq + imagq) > 4.0) break;
 
-    imag = fabs(2.0f * real * imag) + imag0;
+    imag = fabs(2.0 * real * imag) + imag0;
     real = realq - imagq + real0;
   }
   return i;
@@ -58,10 +58,10 @@ void display( void )
   glClear(GL_COLOR_BUFFER_BIT);
   glBegin(GL_POINTS);
 
-  realmin = -1.8f;
-  realmax = -1.7f;
-  imagmin = -0.08f;
-  imagmax = 0.01f; 
+  realmin = -1.8;
+  realmax = -1.7;
+  imagmin = -0.08;
+  imagmax = 0.01; 
   
   deltareal = (double) (realmax - realmin) / (double) WIDTH;
   deltaimag = (double) (imagmax - imagmin) / (double) HEIGHT;

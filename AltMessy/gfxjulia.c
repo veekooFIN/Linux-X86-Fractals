@@ -41,9 +41,9 @@ int julia(double real0, double imag0) {
     realq = (real * real);
     imagq = (imag * imag);
 
-    if ((realq + imagq) > 4.0f) break;
+    if ((realq + imagq) > 4.0) break;
 
-    imag = (2.0f * real * imag) + CY;
+    imag = (2.0 * real * imag) + CY;
     real = realq - imagq + CX;
   }
   return i;
@@ -59,10 +59,10 @@ void display( void )
   glClear(GL_COLOR_BUFFER_BIT);
   glBegin(GL_POINTS);
 
-  realmin = -1.7f;
-  realmax = 1.7f;
-  imagmin = -1.0f;
-  imagmax = 1.0f; 
+  realmin = -1.7;
+  realmax = 1.7;
+  imagmin = -1.0;
+  imagmax = 1.0; 
   
   deltareal = (double) (realmax - realmin) / (double) WIDTH;
   deltaimag = (double) (imagmax - imagmin) / (double) HEIGHT;

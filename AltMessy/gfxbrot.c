@@ -39,9 +39,9 @@ int mandelbrot(double real0, double imag0) {
     realq = (real * real);
     imagq = (imag * imag);
 
-    if ((realq + imagq) > 4.0f) break;
+    if ((realq + imagq) > 4.0) break;
 
-    imag = (2.0f * real * imag) + imag0;
+    imag = (2.0 * real * imag) + imag0;
     real = realq - imagq + real0;
   }
   return i;
@@ -57,10 +57,10 @@ void display(void)
   glClear(GL_COLOR_BUFFER_BIT);
   glBegin(GL_POINTS);
 
-  realmin = -2.0f;
-  realmax = 0.8f;
-  imagmin = -1.0f;
-  imagmax = 1.0f; 
+  realmin = -2.0;
+  realmax = 0.8;
+  imagmin = -1.0;
+  imagmax = 1.0; 
   
   deltareal = (double) (realmax - realmin) / (double) WIDTH;
   deltaimag = (double) (imagmax - imagmin) / (double) HEIGHT;
