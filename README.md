@@ -2,7 +2,11 @@
 Hobby code development for Linux in C language - Fractals
 ---------------------------------------------------------------------------------------------------------------
 
-Check the new SDL2 fractals
+In root there is old gfx opengl fractals and ascii fractals - currently after some update in linux don't work well
+
+In folder fract_in_opengl there is updated gfx opengl fractals - updated but don't work well
+
+In folder fract_in_sdl2 there is new gfx fractals working with SDL2
 
 ---------------------------------------------------------------------------------------------------------------
 
