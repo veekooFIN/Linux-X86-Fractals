@@ -6,7 +6,7 @@ In root there is old gfx opengl fractals and ascii fractals - currently after so
 
 In folder fract_in_opengl there is updated gfx opengl fractals - updated but don't work well
 
-In folder fract_in_sdl2 there is new gfx fractals working with SDL2
+In folder fract_in_sdl2 there is new gfx fractals working with SDL2 - works ok
 
 ---------------------------------------------------------------------------------------------------------------
 
