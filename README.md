@@ -10,6 +10,14 @@ In folder fract_in_sdl2 there is new gfx fractals working with SDL2
 
 ---------------------------------------------------------------------------------------------------------------
 
+OpenGL gfx uses GPU mostly so it draws image in 1 sec
+
+SDL2 gfx uses CPU so it draws image in 5 sec
+
+Ascii txt draws very quick
+
+---------------------------------------------------------------------------------------------------------------
+
 Gfx mandelbrot fractal set for Linux.
 
 Gfx julia fractal set for Linux.
