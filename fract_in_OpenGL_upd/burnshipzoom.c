@@ -19,10 +19,10 @@
 #define INITIAL_WIDTH  1200
 #define INITIAL_HEIGHT 800
 
-double view_left   = -2.50;
-double view_right  =  1.00;
-double view_bottom = -1.40;
-double view_top    =  1.40;
+double view_left   = -1.8;
+double view_right  = -1.7;
+double view_bottom =  -0.01;
+double view_top    =  0.08;
 
 int max_iter = 256;
 double zoom_factor = 0.4;
@@ -35,7 +35,7 @@ void burnship_pixel(double real0, double imag0, float *r, float *g, float *b)
     while ((x*x + y*y <= 4.0) && (iter < max_iter))
     {
         double xtemp = x*x - y*y + real0;
-        y = fabs(2.0*x*y) + imag0;
+        y = fabs(2.0*x*y) - imag0; 
         x = xtemp;
         iter++;
     }
@@ -145,8 +145,8 @@ void keyboard(unsigned char key, int x, int y)
     switch (key)
     {
         case 'r': case 'R':
-            view_left   = -2.50; view_right  =  1.00;
-            view_bottom = -1.40; view_top    =  1.40;
+            view_left   = -1.8; view_right  =  -1.7;
+            view_bottom =  -0.01; view_top   =  0.08;
             max_iter = 256;
             glutPostRedisplay();
             break;
