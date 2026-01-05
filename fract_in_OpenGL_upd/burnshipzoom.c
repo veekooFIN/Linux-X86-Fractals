@@ -21,8 +21,8 @@
 
 double view_left   = -1.8;
 double view_right  = -1.7;
-double view_bottom =  -0.01;
-double view_top    =  0.08;
+double view_bottom =  -0.08;
+double view_top    =  0.01;
 
 int max_iter = 256;
 double zoom_factor = 0.4;
@@ -35,7 +35,7 @@ void burnship_pixel(double real0, double imag0, float *r, float *g, float *b)
     while ((x*x + y*y <= 4.0) && (iter < max_iter))
     {
         double xtemp = x*x - y*y + real0;
-        y = fabs(2.0*x*y) - imag0; 
+        y = fabs(2.0*x*y) + imag0; 
         x = xtemp;
         iter++;
     }
@@ -63,14 +63,14 @@ void display(void)
 
     double dx = (view_right - view_left) / win_width;
     double dy = (view_top - view_bottom) / win_height;
-
+    
     for (int x = 0; x < win_width; x++)
     {
         double real = view_left + x * dx;
         for (int y = 0; y < win_height; y++)
         {
-            double imag = view_bottom + y * dy;
-
+            double imag = view_top - y * dy;
+            
             float r, g, b;
             burnship_pixel(real, imag, &r, &g, &b);
 
@@ -101,7 +101,7 @@ void mouse(int button, int state, int x, int y)
         int win_height = glutGet(GLUT_WINDOW_HEIGHT);
 
         double norm_x = (double)x / win_width;
-        double norm_y = (double)(win_height - y) / win_height; 
+        double norm_y = (double)y / win_height; 
         
         double zoom_center_real = view_left   + norm_x * (view_right - view_left);
         double zoom_center_imag = view_bottom + norm_y * (view_top    - view_bottom);
@@ -146,7 +146,7 @@ void keyboard(unsigned char key, int x, int y)
     {
         case 'r': case 'R':
             view_left   = -1.8; view_right  =  -1.7;
-            view_bottom =  -0.01; view_top   =  0.08;
+            view_bottom =  -0.08; view_top   =  0.01;
             max_iter = 256;
             glutPostRedisplay();
             break;
