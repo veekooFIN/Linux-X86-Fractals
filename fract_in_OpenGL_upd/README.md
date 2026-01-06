@@ -4,7 +4,7 @@ Hobby code development for Linux in C language - Fractals
 
 ---------------------------------------------------------------------------------------------------------------
 
-Here is OpenGL updated version
+Here is OpenGL updated version of fractals
 
 ---------------------------------------------------------------------------------------------------------------
 
