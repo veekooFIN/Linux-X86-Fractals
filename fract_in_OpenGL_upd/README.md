@@ -1,15 +1,12 @@
 # Linux-X86-Fractals
 Hobby code development for Linux in C language - Fractals
 ---------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------
 
-Here is OpenGL updated version if previous don't work
-
----------------------------------------------------------------------------------------------------------------
+Here is OpenGL updated version
 
 ---------------------------------------------------------------------------------------------------------------
 
-Coming up mouse zoom version of fractals - under development
+Here is also new mouse zoom version of fractals
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -23,7 +20,7 @@ sudo apt install freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev
 
 How to compile:
 
-gcc gfxbrot.c -o gfxbrot -lglut -lGL -lGLU
+gcc gfxbrot.c -o gfxbrot -lGL -lGLU -lglut -lm
 
 How to run:
 
