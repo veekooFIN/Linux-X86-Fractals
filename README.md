@@ -2,6 +2,8 @@
 Hobby code development for Linux in C language - Fractals
 ---------------------------------------------------------------------------------------------------------------
 
+---------------------------------------------------------------------------------------------------------------
+
 In root there is old gfx opengl fractals and ascii fractals
 
 In folder fract_in_opengl there is updated gfx opengl fractals - plus new mouse zoom functioning fractals
