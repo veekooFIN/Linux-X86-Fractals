@@ -189,7 +189,11 @@ void mouse(int button, int state, int x, int y)
         FractalConfig *fc = &fractals[current_fractal];
 
         double norm_x = (double)x / win_width;
-        double norm_y = (double)(win_height - y) / win_height; 
+        double norm_y;
+        if (fc->type == FRACTAL_BURNING_SHIP)
+            norm_y = (double)y / win_height;
+        else
+            norm_y = (double)(win_height - y) / win_height;      
         
         double zoom_center_real = fc->view_left   + norm_x * (fc->view_right - fc->view_left);
         double zoom_center_imag = fc->view_bottom + norm_y * (fc->view_top    - fc->view_bottom);
