@@ -8,7 +8,7 @@ Here is OpenGL updated version of fractals
 
 ---------------------------------------------------------------------------------------------------------------
 
-Here is also new mouse zoom version of fractals
+There is Fractal Explorer for OpenGL program that combines all my work with fractals. Testing new tricks and diffrent approaches.
 
 ---------------------------------------------------------------------------------------------------------------
 
