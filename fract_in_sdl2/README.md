@@ -3,7 +3,9 @@ Hobby code development for Linux in C language - Fractals
 ---------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------
 
-Here is SDL2 version if OpenGL don't work
+Here is SDL2 version of fractals
+
+There is Fractal Explorer for SDL2 program that combines all my work with fractals. Testing new tricks and diffrent approaches.
 
 ---------------------------------------------------------------------------------------------------------------
 
